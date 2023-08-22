@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="pt-br"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width" />
+  <title>Artec Solar</title>
+  <!--
+    Desenvolvido por Relev Tecnologia 
+    http://www.relev.com.br 
+-->
+
+  <!-- css -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="shortcut icon" type="image/png" href="images/logo.jpg">
+  <!-- js -->
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a id="logo" class="pull-left" href="index.html"></a>
+        <div class="nav-collapse collapse pull-right">
+          <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="empresa.html">Empresa</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Produtos <i
+                  class="fa fa-angle-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="produto-01.html">Energia Solar</a></li>
+                <li><a href="produto-02.html">Aquecimento Solar</a></li>
+                <li><a href="produto-03.html">Climatização</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Serviços <i
+                  class="fa fa-angle-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="servico-01.html">Higienização de Ar Condicionado</a></li>
+                <li><a href="servico-02.html">Manutenção de Aquecedor Solar</a></li>
+                <li><a href="servico-03.html">Manutenção de Ar Condicionado</a></li>
+                <li><a href="produto-01.html">Projeto de Energia Fotovoltaica</a></li>
+              </ul>
+            </li>
+            <li><a href="contato.html">Contato</a></li>
+            <li class="login"><a href="http://webmail.artecsolar.com.br" target="_blank" title="Acessar WebMail"><i
+                  class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </header>
+  <div id="map-canvas">
+    <iframe height="200"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3657.9982447892635!2d-46.465486074823616!3d-23.532565540810936!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66ce83c1a277%3A0xe0da5f59c2775a25!2sArtec+Solar!5e0!3m2!1spt-BR!2sbr!4v1513012161860"
+      style="border:0;width:100%;"></iframe>
+  </div>
+
+  <section id="contact-page" class="container">
+    <div class="row-fluid">
+
+      <div class="span8">
+        <img src="images/contato.jpg" alt="img" class="fotoCentro" /><br />
+        <h4>Envie sua mensagem</h4>
+
+        <form id="contact-form" name="contact-form" class="form" action="php/enviar-contato.php" method="post"
+          enctype="multipart/form-data" accept-charset="UTF-8">
+          <div class="row-fluid">
+            <div class="span5">
+              <input type="text" class="input-block-level" id="nome" name="nome" required="required" placeholder="Nome">
+              <input type="email" class="input-block-level" id="email" name="email" required="required"
+                placeholder="E-Mail">
+              <input type="tel" class="input-block-level" id="telefone" name="telefone" required="required"
+                placeholder="DDD&#43;Telefone">
+            </div>
+            <div class="span7">
+              <textarea name="mensagem" id="mensagem" required class="input-block-level" rows="8"
+                placeholder="Digite uma mensagem..."></textarea>
+            </div>
+          </div>
+          <button type="submit" id="enviar" class="btn btn-success btn-large pull-right">Enviar Mensagem</button>
+          <br /><br />
+        </form>
+      </div>
+
+      <div class="span3">
+        <h3>Artec Solar</h3>
+        <h4>Instalação, Manutenção e Venda</h4>
+        <p>Entre em contato conosco escolhendo qual a melhor forma, seja ela via telefone, e-mail ou nosso formulário!
+        </p>
+
+        <hr>
+
+        <p><i class="fa fa-map-marker"></i>&nbsp;Rua Artur Bernades Filho, 57<br />08225-415 - A E Carvalho<br />São
+          Paulo / SP</p>
+
+        <hr>
+
+        <p><i class="fa fa-map-marker"></i>&nbsp;Rua Antonio Maximo, 258 <br />08810-090 - Vila Suissa<br />Mogi das
+          Cruzes / SP</p>
+
+        <hr>
+
+        <p><i class="fa fa-envelope"></i>&nbsp;E-mail: <a
+            href="mailto:artec@artecsolar.com.br">artec@artecsolar.com.br</a></p>
+        <p><i class="fa fa-phone"></i>&nbsp;Atendimento: </p>
+        <h4><a href="tel:01126100449">(11) 2610-0449</a></h4>
+        <p><i class="fa fa-whatsapp"></i>&nbsp;WhatsApp: </p>
+        <h4><a href="https://api.whatsapp.com/send?phone=5511998549958" target="_blank">(11) 99854-9958</a></h4>
+
+        <hr>
+
+        <p><i class="fa fa-clock-o"></i>&nbsp;Horário de atendimento:<br />Segunda à Sexta, das 08h00 às
+          18h00.<br />Sábado, das 08h00 às 13h00.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!--bottom-->
+  <section id="bottom" class="main">
+    <!--container-->
+    <div class="container">
+
+      <!--row-fluids-->
+      <div class="row-fluid">
+
+        <!--endereco-->
+        <div class="span4">
+          <h4>ENTRE EM CONTATO</h4>
+          <ul class="unstyled address">
+            <li>
+              <i class="fa fa-map-marker"></i> Rua Artur Bernades Filho, 57<br />08225-415 - A E Carvalho<br />São Paulo
+              / SP
+            </li>
+            <li>
+              <i class="fa fa-envelope"></i> <a href="mailto:artec@artecsolar.com.br">artec@artecsolar.com.br</a>
+            </li>
+            <li>
+              <i class="fa fa-phone"></i> <strong>Atendimento: </strong>
+              <h4><a href="tel:01126100449">(11) 2610-0449</a></h4>
+            </li>
+            <li>
+              <i class="fa fa-whatsapp"></i> <strong>WhatsApp: </strong>
+              <h4><a href="https://api.whatsapp.com/send?phone=5511998549958" target="_blank">(11) 99854-9958</a></h4>
+            </li>
+          </ul>
+          <br class="hr1">
+        </div>
+        <!--/endereco-->
+
+        <!--menu-->
+        <div class="span2">
+          <h4>MENU</h4>
+          <div>
+            <ul class="arrow">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="empresa.html" title="Empresa">Empresa</a></li>
+              <li><a href="contato.html" title="Contato">Contato</a></li>
+              <li><a target="_blank" href="http://webmail.artecsolar.com.br" title="WebMail">WebMail</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/menu-->
+
+        <!--menu2-->
+        <div class="span3">
+          <div>
+            <ul class="arrow">
+              <li><a href="produto-01.html">Energia Solar</a></li>
+              <li><a href="produto-02.html">Aquecimento Solar</a></li>
+              <li><a href="produto-03.html">Climatização</a></li>
+              <li><a href="servico-01.html">Higienização de Ar Condicionado</a></li>
+              <li><a href="servico-02.html">Manutenção de Aquecedor Solar</a></li>
+              <li><a href="servico-03.html">Manutenção de Ar Condicionado</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/menu2-->
+
+        <div class="span3" id="rodape-face">
+          <div class="row-fluid">
+            <div id="fb-root"></div>
+            <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));</script>
+
+            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-small-header="true"
+              data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
+              data-show-posts="false">
+              <div class="fb-xfbml-parse-ignore">
+                <blockquote cite="https://www.facebook.com/facebook"><a
+                    href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!--/row-fluid-->
+    </div>
+    <!--/container-->
+
+  </section>
+  <!--/bottom-->
+
+  <!--footer-->
+  <footer id="footer">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span5 cp">
+          &copy; 2018-2021 Artec Solar. Todos os Direitos Reservados.
+        </div>
+        <!--/copyright-->
+
+        <div class="span6">
+          <ul class="social pull-right">
+
+            <li><a href="http://validator.w3.org/check?uri=www.artecsolar.com.br/contato.html" target="_blank"
+                title="html5 nos padrões W3C">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-html5 fa-stack-1x fa-inverse"></i>
+                </span></a></li>
+            <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=www.artecsolar.com.br/css/main.css"
+                target="_blank" title="css3 nos padrões W3C">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-css3 fa-stack-1x fa-inverse"></i>
+                </span></a></li>
+            <li><a href="https://search.google.com/test/mobile-friendly?url=www.artecsolar.com.br/contato.html"
+                target="_blank" title="Compatível com dispositivos móveis nos padrões Google">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-tablet fa-stack-1x fa-inverse"></i>
+                </span></a></li>
+
+            <li><a href="https://www.instagram.com/artecsolar_insta/" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span></a></li>
+            <li><a href="https://www.facebook.com/artec-solar-580435938993112" target="_blank"
+                title="Facebook Artec Solar">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-facebook-official fa-stack-1x fa-inverse"></i>
+                </span></a></li>
+          </ul>
+        </div>
+
+        <div class="span1">
+          <br class="hr1"><a id="gototop" class="gototop pull-right" href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!--/go to top-->
+      </div>
+    </div>
+  </footer>
+  <!--/footer-->
+</body>
+
+</html>
