@@ -8,10 +8,15 @@ $timezone_brasil = date("Y-m-d H:i:s");
 $date_brasil = date("Y-m-d");
 
 // Configuração do banco de dados MySQL
-define('HOST', 'p:srv1939.hstgr.io');  // Adiciona 'p:' para conexão persistente
-define('USUARIO', 'u120216170_root');
-define('SENHA', '9>gHHdG6');
-define('DB', 'u120216170_sandbox');
+// define('HOST', 'p:srv1939.hstgr.io');  // Adiciona 'p:' para conexão persistente
+// define('USUARIO', 'u120216170_root');
+// define('SENHA', '9>gHHdG6');
+// define('DB', 'u120216170_sandbox');
+
+define('HOST', 'p:srv1939.hstgr.io');
+define('USUARIO', 'u120216170_user');
+define('SENHA', 'w^qZRST8B');
+define('DB', 'u120216170_artec');
 
 // Usando mysqli_connect, mas agora com conexão persistente
 $conn = mysqli_connect(HOST, USUARIO, SENHA, DB);
