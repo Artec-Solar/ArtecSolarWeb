@@ -1,0 +1,83 @@
+/* Estilo para o container de notificações */
+#notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo de uma notificação */
+.notification {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 250px;
+  font-size: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-out, fadeOut 0.5s ease-in 4.5s;
+  transition: transform 0.3s ease;
+}
+
+/* Animação de fade in */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Animação de fade out */
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+}
+
+/* Estilo para notificações de erro */
+.notification.error {
+  background-color: #d32f2f; /* Vermelho para erro */
+  color: white; /* Texto branco para contraste */
+}
+
+/* Estilo para notificações de sucesso */
+.notification.success {
+  background-color: #4caf50; /* Verde para sucesso */
+  color: white; /* Texto branco para contraste */
+}
+
+/* Estilo para notificações de aviso */
+.notification.warning {
+  background-color: #ff9800; /* Laranja para aviso */
+  color: white; /* Texto branco para contraste */
+}
+
+/* Ícones */
+.notification .icon {
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+/* Ícones de acordo com o tipo de notificação */
+.notification.success .icon {
+  color: #2e7d32; /* Verde para sucesso */
+}
+
+.notification.error .icon {
+  color: #fff; /* Branco para o ícone de erro */
+}
+
+.notification.warning .icon {
+  color: #fff; /* Branco para o ícone de aviso */
+}
