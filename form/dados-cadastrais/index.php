@@ -278,6 +278,11 @@
       </div>
 
       <div class="form-group">
+        <label for="numero"><i class="fa-solid fa-hashtag input-icon"></i> Número</label>
+        <input type="text" id="numero" name="numero" class="input-field" placeholder="Nº da Residência">
+      </div>
+
+      <div class="form-group">
         <label for="bairro"><i class="fas fa-map-marker input-icon"></i> Bairro <span style="color:red">*</span></label>
         <input type="text" id="bairro" name="bairro" class="input-field" required placeholder="Bairro">
       </div>
@@ -298,11 +303,6 @@
           <!-- Campo de texto para descrição adicional -->
           <input type="text" id="complemento" name="complemento" class="input-field" placeholder="Detalhes do complemento">
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="numero"><i class="fa-solid fa-hashtag input-icon"></i> Número</label>
-        <input type="text" id="numero" name="numero" class="input-field" placeholder="Nº da Residência">
       </div>
 
       <div class="form-group">
