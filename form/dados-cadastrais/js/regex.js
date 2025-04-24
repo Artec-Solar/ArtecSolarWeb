@@ -1,3 +1,6 @@
+// Em api/cep.js
+import { showNotification } from '../js/notification.js';  // Importando a função de notification.js
+
 document.addEventListener('DOMContentLoaded', function () {
   // Elementos do formulário
   const tipoCadastro = document.getElementById('tipoCadastro');
@@ -82,9 +85,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Função de validação de CPF e CNPJ
   $(document).ready(function () {
-      // Aplicar máscara para CPF e CNPJ e telefone
+      // Aplicar máscara para CPF e CNPJ e celular
       Inputmask("999.999.999-99").mask("#cpfCnpj");
-      Inputmask("(99) 99999-9999").mask("#telefone");
+      Inputmask("(99) 99999-9999").mask("#celular");
+      Inputmask("(99) 9999-9999").mask("#telefone");
       Inputmask("99999-999").mask("#cep");
 
       // Validação do formulário
@@ -95,13 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
           // Validação CPF/CNPJ
           if (!validateCpfCnpj($('#cpfCnpj').val())) {
               valid = false;
-              alert("CPF ou CNPJ inválido!");
+              showNotification("Dados de CPF/CNPJ Inválido!", 'error');
           }
 
           // Se todos os campos forem válidos, envia o formulário
           if (valid) {
-            showNotification('Formulário Enviado!', 'success');
-              // Submissão do formulário pode ser feita aqui
+                console.log('Dados Enviado para Servidor:' + valid);
+                // Submissão do formulário pode ser feita aqui
           }
       });
   });

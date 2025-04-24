@@ -8,15 +8,15 @@ $timezone_brasil = date("Y-m-d H:i:s");
 $date_brasil = date("Y-m-d");
 
 // Configuração do banco de dados MySQL
-// define('HOST', 'p:srv1939.hstgr.io');  // Adiciona 'p:' para conexão persistente
-// define('USUARIO', 'u120216170_root');
-// define('SENHA', '9>gHHdG6');
-// define('DB', 'u120216170_sandbox');
+define('HOST', 'p:srv1939.hstgr.io');  // Adiciona 'p:' para conexão persistente
+define('USUARIO', 'u120216170_root');
+define('SENHA', '9>gHHdG6');
+define('DB', 'u120216170_sandbox');
 
-define('HOST', 'p:srv1939.hstgr.io');
-define('USUARIO', 'u120216170_user');
-define('SENHA', 'w^qZRST8B');
-define('DB', 'u120216170_artec');
+// define('HOST', 'p:srv1939.hstgr.io');
+// define('USUARIO', 'u120216170_user');
+// define('SENHA', 'w^qZRST8B');
+// define('DB', 'u120216170_artec');
 
 // Usando mysqli_connect, mas agora com conexão persistente
 $conn = mysqli_connect(HOST, USUARIO, SENHA, DB);
@@ -26,27 +26,32 @@ if (!$conn) {
 }
 
 // Função para validar CPF
-function validateCpf($cpf) {
+function validateCpf($cpf)
+{
     return preg_match('/^\d{3}\.\d{3}\.\d{3}-\d{2}$/', $cpf);
 }
 
 // Função para validar CNPJ
-function validateCnpj($cnpj) {
+function validateCnpj($cnpj)
+{
     return preg_match('/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/', $cnpj);
 }
 
 // Função para validar email
-function validateEmail($email) {
+function validateEmail($email)
+{
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 // Função para validar telefone (com DDD)
-function validateTelefone($telefone) {
-    return preg_match('/^\(\d{2}\) \d{5}-\d{4}$/', $telefone);
+function validateCelular($celular)
+{
+    return preg_match('/^\(\d{2}\) \d{5}-\d{4}$/', $celular);
 }
 
 // Função para validar CEP
-function validateCep($cep) {
+function validateCep($cep)
+{
     return preg_match('/^\d{5}-\d{3}$/', $cep);
 }
 
@@ -65,16 +70,18 @@ if ($data) {
     $inscricaoEstadual = mysqli_real_escape_string($conn, htmlspecialchars($data['inscricaoEstadual']));
     $email = mysqli_real_escape_string($conn, htmlspecialchars($data['email']));
     $telefone = mysqli_real_escape_string($conn, htmlspecialchars($data['telefone']));
+    $celular = mysqli_real_escape_string($conn, htmlspecialchars($data['celular']));
     $cep = mysqli_real_escape_string($conn, htmlspecialchars($data['cep']));
     $cidade = mysqli_real_escape_string($conn, htmlspecialchars($data['cidade']));
     $endereco = mysqli_real_escape_string($conn, htmlspecialchars($data['endereco']));
     $bairro = mysqli_real_escape_string($conn, htmlspecialchars($data['bairro']));
-    $complemento = mysqli_real_escape_string($conn, htmlspecialchars($data['complemento']));
+    $numero = mysqli_real_escape_string($conn, htmlspecialchars($data['numero'])); // Adicionando o campo número
+    $complemento = mysqli_real_escape_string($conn, htmlspecialchars($data['complemento'])); // Complemento com tipo e descrição concatenados
     $observacoes = mysqli_real_escape_string($conn, htmlspecialchars($data['observacoes']));
-    $comoConheceu = mysqli_real_escape_string($conn, htmlspecialchars($data['comoConheceu']));
+    $comoConheceu = mysqli_real_escape_string($conn, htmlspecialchars($data['comoConheceu'])); // ComoConheceu com outrosDetalhes concatenados
 
     // Verificação de campos obrigatórios
-    if (empty($solicitacao) || empty($tipoSistema) || empty($tipoCadastro) || empty($nome) || empty($cpfCnpj) || empty($email) || empty($telefone) || empty($cep) || empty($cidade) || empty($endereco) || empty($bairro)) {
+    if (empty($solicitacao) || empty($tipoSistema) || empty($tipoCadastro) || empty($nome) || empty($cpfCnpj) || empty($email) || empty($telefone) || empty($cep) || empty($cidade) || empty($endereco) || empty($bairro) || empty($numero)) {
         echo json_encode(['message' => 'Campos obrigatórios não podem estar vazios']);
         exit;
     }
@@ -96,8 +103,8 @@ if ($data) {
     }
 
     // Validar telefone
-    if (!validateTelefone($telefone)) {
-        echo json_encode(['message' => 'Telefone inválido']);
+    if (!validateCelular($celular)) {
+        echo json_encode(['message' => 'Celular Inválido']);
         exit;
     }
 
@@ -110,12 +117,12 @@ if ($data) {
     // Inserir os dados na tabela PessoaSolicitacao usando mysqli_query
     $sql = "INSERT INTO PessoaSolicitacao (
         solicitacao, tipoSistema, tipoCadastro, nome, cpfCnpj, rg,
-        inscricaoEstadual, email, telefone, cep, cidade, endereco,
-        bairro, complemento, observacoes, comoConheceu, created_at
+        inscricaoEstadual, email, telefone, celular, cep, cidade, endereco,
+        bairro, numero, complemento, observacoes, comoConheceu, created_at
     ) VALUES (
         '$solicitacao', '$tipoSistema', '$tipoCadastro', '$nome', '$cpfCnpj', '$rg',
-        '$inscricaoEstadual', '$email', '$telefone', '$cep', '$cidade', '$endereco',
-        '$bairro', '$complemento', '$observacoes', '$comoConheceu', '$timezone_brasil'
+        '$inscricaoEstadual', '$email', '$telefone', '$celular', '$cep', '$cidade', '$endereco',
+        '$bairro', '$numero', '$complemento', '$observacoes', '$comoConheceu', '$timezone_brasil'
     )";
 
     if (mysqli_query($conn, $sql)) {
@@ -129,4 +136,3 @@ if ($data) {
 } else {
     echo json_encode(['message' => 'Dados não recebidos corretamente']);
 }
-?>

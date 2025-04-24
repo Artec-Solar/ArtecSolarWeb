@@ -181,8 +181,8 @@
     </div>
   </header>
 
-<!-- Container de notificações -->
-<div id="notification-container"></div>
+  <!-- Container de notificações -->
+  <div id="notification-container"></div>
 
   <!-- Formulário Moderno -->
   <div class="form-container">
@@ -198,7 +198,7 @@
           <option value="Manutenção">Manutenção</option>
           <option value="Orçamento">Orçamento</option>
           <option value="Garantia">Garantia</option>
-          <option value="Outro">Outro</option>
+          <option value="Outros">Outros</option>
         </select>
       </div>
 
@@ -209,12 +209,12 @@
           <option value="Climatização de Ambientes">Climatização de Ambientes</option>
           <option value="Aquecimento Solar Banho">Aquecimento Solar Banho</option>
           <option value="Aquecimento Solar Piscina">Aquecimento Solar Piscina</option>
-          <option value="Energia Solar I Fotovoltaico">Energia solar I Fotovoltaico</option>
+          <option value="Energia Solar I Fotovoltaico">Energia Solar I Fotovoltaico</option>
           <option value="Sistema VRF">Sistema VRF</option>
           <option value="Sistema de Renovação de AR">Sistema de Renovação de AR</option>
           <option value="Sistema de Exaustão de Ambientes">Sistema de Exaustão de Ambientes</option>
           <option value="Contrato PMOC">Contrato PMOC</option>
-          <option value="Outro">Outro</option>
+          <option value="Outros">Outros</option>
         </select>
       </div>
 
@@ -253,8 +253,13 @@
       </div>
 
       <div class="form-group">
-        <label for="telefone"><i class="fas fa-phone input-icon"></i> Contato Telefônico <span style="color:red">*</span></label>
-        <input type="tel" id="telefone" name="telefone" class="input-field" required placeholder="(XX) XXXXX-XXXX">
+        <label for="celular"><i class="fas fa-phone input-icon"></i> Celular <span style="color:red">*</span></label>
+        <input type="tel" id="celular" name="celular" class="input-field" required placeholder="(XX) XXXXX-XXXX">
+      </div>
+
+      <div class="form-group">
+        <label for="telefone"><i class="fa-solid fa-tty input-icon"></i> Telefone Fixo</label>
+        <input type="tel" id="telefone" name="telefone" class="input-field" placeholder="(XX) XXXX-XXXX">
       </div>
 
       <div class="form-group">
@@ -278,8 +283,26 @@
       </div>
 
       <div class="form-group">
-        <label for="complemento"><i class="fas fa-location-arrow input-icon"></i> Complemento</label>
-        <input type="text" id="complemento" name="complemento" class="input-field" placeholder="Complemento">
+        <label for="complemento"><i class="fas fa-location-arrow input-icon"></i> Complemento <span style="color:red">*</span></label>
+
+        <div class="input-complemento">
+          <!-- Dropdown para selecionar tipo de complemento -->
+          <select id="tipo-complemento" name="tipo-complemento" class="input-field" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Andar">Andar</option>
+            <option value="Bloco">Bloco</option>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <!-- Campo de texto para descrição adicional -->
+          <input type="text" id="complemento" name="complemento" class="input-field" placeholder="Detalhes do complemento">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numero"><i class="fa-solid fa-hashtag input-icon"></i> Número</label>
+        <input type="text" id="numero" name="numero" class="input-field" placeholder="Nº da Residência">
       </div>
 
       <div class="form-group">
@@ -288,18 +311,45 @@
       </div>
 
       <div class="form-group">
-        <label for="comoConheceu"><i class="fas fa-users input-icon"></i> Como você conheceu a nossa empresa?</label>
-        <textarea id="comoConheceu" name="comoConheceu" rows="2" class="input-field" placeholder="Exemplo: Redes sociais, indicação, etc."></textarea>
+        <label for="comoConheceu"><i class="fas fa-users input-icon"></i> Como você conheceu a nossa empresa? <span style="color:red">*</span></label>
+
+        <!-- Dropdown para selecionar como conheceu -->
+        <select id="comoConheceu" name="comoConheceu" class="input-field" onchange="showOtherInput()" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Já era Cliente">Já era cliente</option>
+          <option value="Busca da Internet">Busca da internet</option>
+          <option value="Anúncios nas Redes Sociais">Anúncios nas redes sociais</option>
+          <option value="Indicação">Indicação</option>
+          <option value="Outros">Outros</option>
+        </select>
+
+        <!-- Campo de texto para "Outros" -->
+        <textarea id="outrosDetalhes" name="outrosDetalhes" rows="2" class="input-field" placeholder="Se foi Outro, Descreva aqui..." style="display:none;"></textarea>
       </div>
+
+      <script>
+        // Função para mostrar ou esconder o campo de texto quando "Outros" for selecionado
+        function showOtherInput() {
+          const select = document.getElementById('comoConheceu');
+          const outrosTextarea = document.getElementById('outrosDetalhes');
+
+          if (select.value === 'Outros') {
+            outrosTextarea.style.display = 'block';
+          } else {
+            outrosTextarea.style.display = 'none';
+          }
+        }
+      </script>
 
       <div class="form-group">
         <button type="submit" class="submit-btn"><i class="fa-solid fa-floppy-disk mr-2" style="color: white;"></i> Enviar Solicitação</button>
       </div>
     </form>
   </div>
-  <script src="api/send.js"></script>
-  <script src="api/cep.js"></script>
-  <script src="js/regex.js"></script>
+  <script type="module" src="js/notification.js"></script>
+  <script type="module" src="js/regex.js"></script>
+  <script type="module" src="api/cep.js"></script>
+  <script type="module" src="api/send.js"></script>
 </body>
 
 </html>

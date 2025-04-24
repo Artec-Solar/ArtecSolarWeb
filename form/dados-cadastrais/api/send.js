@@ -1,75 +1,23 @@
+// Em api/cep.js
+import { showNotification } from '../js/notification.js';  // Importando a função de notification.js
+
 // Espera o DOM ser completamente carregado
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-    // Função para criar e mostrar notificações
-    function showNotification(message, type = 'success') {
-        const notificationContainer = document.getElementById('notification-container');
-
-        // Verifica se o contêiner existe
-        if (!notificationContainer) {
-            console.error('Notification container not found!');
-            return;
-        }
-
-        // Criando o elemento de notificação
-        const notification = document.createElement('div');
-        notification.classList.add('notification');
-
-        // Adiciona a classe de tipo (sucesso, erro, aviso)
-        notification.classList.add(type);
-
-        // Criar o elemento do ícone
-        const iconElement = document.createElement('span');
-        iconElement.classList.add('icon');
-
-        // Definir ícone com base no tipo de notificação
-        let iconClass;
-        switch (type) {
-            case 'success':
-                iconClass = 'fa-check-circle';  // Ícone de sucesso
-                break;
-            case 'error':
-                iconClass = 'fa-times-circle';  // Ícone de erro
-                break;
-            case 'warning':
-                iconClass = 'fa-exclamation-circle';  // Ícone de aviso
-                break;
-            default:
-                iconClass = 'fa-info-circle';  // Ícone padrão
-        }
-
-        // Adiciona a classe de ícone
-        iconElement.classList.add('fa', iconClass);
-
-        // Criar o elemento de mensagem
-        const messageElement = document.createElement('span');
-        messageElement.textContent = message;
-
-        // Adicionar ícone e mensagem à notificação
-        notification.appendChild(iconElement);
-        notification.appendChild(messageElement);
-
-        // Adiciona a notificação ao contêiner
-        notificationContainer.appendChild(notification);
-
-        // Adiciona a animação de fade-in
-        setTimeout(() => {
-            notification.style.opacity = 1;
-        }, 10);  // Garantir que a animação de fade-in funcione corretamente
-
-        // Remove a notificação após 5 segundos
-        setTimeout(() => {
-            notification.style.animation = 'fadeOut 0.5s ease-in forwards';
-            setTimeout(() => {
-                notificationContainer.removeChild(notification);
-            }, 500);
-        }, 5000);
-    }
-
-    // Exemplo de como chamar a função para mostrar notificações
     document.getElementById('cadastroForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Previne o envio padrão do formulário
 
+        // Concatenar os campos de 'complemento' e 'comoConheceu' com separadores
+        const complemento = document.getElementById('complemento').value;
+        const tipoComplemento = document.getElementById('tipo-complemento').value;
+        const comoConheceu = document.getElementById('comoConheceu').value;
+        const outrosDetalhes = document.getElementById('outrosDetalhes').value;
+
+        // Usar o separador "|" para concatenar os valores de complemento e comoConheceu
+        const complementoConcatenado = `${tipoComplemento}:${complemento}`; // Exemplo: "Andar: 1º Andar"
+        const comoConheceuConcatenado = `${comoConheceu}:${outrosDetalhes}`; // Exemplo: "Indicação: Amigo João"
+
+        // Montar os dados para o envio
         const formData = {
             solicitacao: document.getElementById('solicitacao').value,
             tipoSistema: document.getElementById('tipoSistema').value,
@@ -80,13 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
             inscricaoEstadual: document.getElementById('inscricaoEstadual').value,
             email: document.getElementById('email').value,
             telefone: document.getElementById('telefone').value,
+            celular: document.getElementById('celular').value,
             cep: document.getElementById('cep').value,
             cidade: document.getElementById('cidade').value,
             endereco: document.getElementById('endereco').value,
             bairro: document.getElementById('bairro').value,
-            complemento: document.getElementById('complemento').value,
+            numero: document.getElementById('numero').value, // Adicionando o campo número
+            complemento: complementoConcatenado, // Salvar "tipo-complemento" e "complemento"
             observacoes: document.getElementById('observacoes').value,
-            comoConheceu: document.getElementById('comoConheceu').value
+            comoConheceu: comoConheceuConcatenado // Salvar "comoConheceu" e "outrosDetalhes"
         };
 
         // Enviar dados para o backend via fetch
