@@ -81,7 +81,7 @@ if ($data) {
     $comoConheceu = mysqli_real_escape_string($conn, htmlspecialchars($data['comoConheceu'])); // ComoConheceu com outrosDetalhes concatenados
 
     // Verificação de campos obrigatórios
-    if (empty($solicitacao) || empty($tipoSistema) || empty($tipoCadastro) || empty($nome) || empty($cpfCnpj) || empty($email) || empty($telefone) || empty($cep) || empty($cidade) || empty($endereco) || empty($bairro) || empty($numero)) {
+    if (empty($solicitacao) || empty($tipoSistema) || empty($tipoCadastro) || empty($nome) || empty($cpfCnpj) || empty($email) || empty($cep) || empty($cidade) || empty($endereco) || empty($bairro) || empty($numero)) {
         echo json_encode(['message' => 'Campos obrigatórios não podem estar vazios']);
         exit;
     }
