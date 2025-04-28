@@ -118,7 +118,7 @@ if ($data) {
     $sql = "INSERT INTO PessoaSolicitacao (
         solicitacao, tipoSistema, tipoCadastro, nome, cpfCnpj, rg,
         inscricaoEstadual, email, telefone, celular, cep, cidade, endereco,
-        bairro, numero, complemento, observacoes, comoConheceu, created_at
+        bairro, numero, complemento, observacoes, comoConheceu, data_cadastro
     ) VALUES (
         '$solicitacao', '$tipoSistema', '$tipoCadastro', '$nome', '$cpfCnpj', '$rg',
         '$inscricaoEstadual', '$email', '$telefone', '$celular', '$cep', '$cidade', '$endereco',
